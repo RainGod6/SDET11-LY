@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="6" hostname="HCBdeMacBook-Pro.local" name="pytest" skipped="0" tests="22" time="0.204" timestamp="2019-12-22T21:24:37.055024"><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="4" name="test_div_int[1000000000000-10-100000000000]" time="0.003"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="4" name="test_div_int[0-10-0]" time="0.003"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="4" name="test_div_int[-9-3--3]" time="0.003"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="4" name="test_div_int[-1-1--1]" time="0.002"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="4" name="test_div_int[1-1-1]" time="0.003"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="4" name="test_div_int[10-2-5]" time="0.002"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="4" name="test_div_int[-500--50-10]" time="0.008"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="11" name="test_div_float[-100-10--10]" time="0.004"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="11" name="test_div_float[-5--2-2.5]" time="0.003"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="11" name="test_div_float[9.9-3-3.3]" time="0.005"><failure message="assert 3.3000000000000003 == 3.3
+ +  where 3.3000000000000003 = div(9.9, 3)">num1 = 9.9, num2 = 3, except_result = 3.3
+
+    @pytest.mark.parametrize(&quot;num1,num2,except_result&quot;,
+                             {(10, 2.0, 5.0), (9.9, 3, 3.3), (1, 1.0, 1.0),
+                              (20.8, 4.2, 5.4), (1000000.00, 100, 10000.0),
+                              (-1.0, 1, -1.0), (-100, 10, -10), (-5, -2, 2.5)})
+    def test_div_float(num1, num2, except_result):
+&gt;       assert div(num1, num2) == except_result
+E       assert 3.3000000000000003 == 3.3
+E        +  where 3.3000000000000003 = div(9.9, 3)
+
+test_pytest/test_pytest.py:17: AssertionError</failure></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="11" name="test_div_float[-1.0-1--1.0]" time="0.003"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="11" name="test_div_float[20.8-4.2-5.4]" time="0.005"><failure message="assert 4.9523809523809526 == 5.4
+ +  where 4.9523809523809526 = div(20.8, 4.2)">num1 = 20.8, num2 = 4.2, except_result = 5.4
+
+    @pytest.mark.parametrize(&quot;num1,num2,except_result&quot;,
+                             {(10, 2.0, 5.0), (9.9, 3, 3.3), (1, 1.0, 1.0),
+                              (20.8, 4.2, 5.4), (1000000.00, 100, 10000.0),
+                              (-1.0, 1, -1.0), (-100, 10, -10), (-5, -2, 2.5)})
+    def test_div_float(num1, num2, except_result):
+&gt;       assert div(num1, num2) == except_result
+E       assert 4.9523809523809526 == 5.4
+E        +  where 4.9523809523809526 = div(20.8, 4.2)
+
+test_pytest/test_pytest.py:17: AssertionError</failure></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="11" name="test_div_float[1-1.0-1.0]" time="0.002"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="11" name="test_div_float[10-2.0-5.0]" time="0.004"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="11" name="test_div_float[1000000.0-100-10000.0]" time="0.004"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="19" name="test_div_exception[abc-1-None]" time="0.003"><failure message="TypeError: unsupported operand type(s) for /: &apos;str&apos; and &apos;int&apos;">num1 = &apos;abc&apos;, num2 = 1, except_result = None
+
+    @pytest.mark.parametrize(&quot;num1,num2,except_result&quot;, {(&apos;abc&apos;, 1, None), (888, &apos;a&apos;, None),
+                                                         (&apos;b&apos;, &apos;b&apos;, None), (True, False, None)})
+    def test_div_exception(num1, num2, except_result):
+&gt;       assert div(num1, num2) == except_result
+
+test_pytest/test_pytest.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = &apos;abc&apos;, b = 1
+
+    def div(a, b):
+&gt;       return a/b
+E       TypeError: unsupported operand type(s) for /: &apos;str&apos; and &apos;int&apos;
+
+test_pytest/div.py:2: TypeError</failure></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="19" name="test_div_exception[b-b-None]" time="0.004"><failure message="TypeError: unsupported operand type(s) for /: &apos;str&apos; and &apos;str&apos;">num1 = &apos;b&apos;, num2 = &apos;b&apos;, except_result = None
+
+    @pytest.mark.parametrize(&quot;num1,num2,except_result&quot;, {(&apos;abc&apos;, 1, None), (888, &apos;a&apos;, None),
+                                                         (&apos;b&apos;, &apos;b&apos;, None), (True, False, None)})
+    def test_div_exception(num1, num2, except_result):
+&gt;       assert div(num1, num2) == except_result
+
+test_pytest/test_pytest.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = &apos;b&apos;, b = &apos;b&apos;
+
+    def div(a, b):
+&gt;       return a/b
+E       TypeError: unsupported operand type(s) for /: &apos;str&apos; and &apos;str&apos;
+
+test_pytest/div.py:2: TypeError</failure></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="19" name="test_div_exception[True-False-None]" time="0.004"><failure message="ZeroDivisionError: division by zero">num1 = True, num2 = False, except_result = None
+
+    @pytest.mark.parametrize(&quot;num1,num2,except_result&quot;, {(&apos;abc&apos;, 1, None), (888, &apos;a&apos;, None),
+                                                         (&apos;b&apos;, &apos;b&apos;, None), (True, False, None)})
+    def test_div_exception(num1, num2, except_result):
+&gt;       assert div(num1, num2) == except_result
+
+test_pytest/test_pytest.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = True, b = False
+
+    def div(a, b):
+&gt;       return a/b
+E       ZeroDivisionError: division by zero
+
+test_pytest/div.py:2: ZeroDivisionError</failure></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="19" name="test_div_exception[888-a-None]" time="0.003"><failure message="TypeError: unsupported operand type(s) for /: &apos;int&apos; and &apos;str&apos;">num1 = 888, num2 = &apos;a&apos;, except_result = None
+
+    @pytest.mark.parametrize(&quot;num1,num2,except_result&quot;, {(&apos;abc&apos;, 1, None), (888, &apos;a&apos;, None),
+                                                         (&apos;b&apos;, &apos;b&apos;, None), (True, False, None)})
+    def test_div_exception(num1, num2, except_result):
+&gt;       assert div(num1, num2) == except_result
+
+test_pytest/test_pytest.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = 888, b = &apos;a&apos;
+
+    def div(a, b):
+&gt;       return a/b
+E       TypeError: unsupported operand type(s) for /: &apos;int&apos; and &apos;str&apos;
+
+test_pytest/div.py:2: TypeError</failure></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="25" name="test_div_zero[9.0-0-ZeroDivisionError]" time="0.004"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="25" name="test_div_zero[100-0.0-ZeroDivisionError]" time="0.004"></testcase><testcase classname="test_pytest.test_pytest" file="test_pytest/test_pytest.py" line="25" name="test_div_zero[1-0-ZeroDivisionError]" time="0.003"></testcase></testsuite></testsuites>
