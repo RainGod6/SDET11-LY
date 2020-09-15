@@ -1,16 +1,15 @@
 from appium.webdriver.common.mobileby import MobileBy
-from selenium.webdriver.remote.webdriver import WebDriver
+from test_appium_page_object.page.base_page import BasePage
 
 
-class ApplyCreditCard:
-    _driver: WebDriver
+class ApplyCreditCard(BasePage):
 
-    def __init__(self, driver):
-        self._driver = driver
+    _name_apply_card_element = (MobileBy.ID, "com.wlqq.phantom.plugin.etc:id/tv_online_open_card")
+    _name_nfc_element = (MobileBy.ID, "com.wlqq:id/btn_back")
 
-    def apply_cedit_card(self):
-        self._driver.find_element(MobileBy.ID, "com.wlqq.phantom.plugin.etc:id/tv_online_open_card").click()
-        self._driver.find_element(MobileBy.ID, "com.wlqq:id/btn_back").click()
+    def apply_credit_card(self):
+        self.find(self._name_apply_card_element).click()
+        self.find(self._name_nfc_element).click()
         return self
 
     def goto_faq(self):

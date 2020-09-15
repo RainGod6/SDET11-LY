@@ -7,4 +7,4 @@ class TestApplyCreditCard:
         self.main = App().start().main()
 
     def test_apply_credit_card(self):
-        self.main.goto_etc_home().apply_cedit_card().apply_cedit_card()
+        self.main.goto_etc_home().apply_credit_card()
