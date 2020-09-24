@@ -45,4 +45,5 @@ class App(BasePage):
                                                                                           //*[@class ='android.widget.FrameLayout']//*[@class='android.widget.ImageView']")))
         self.find(MobileBy.XPATH, "//*[contains(@resource-id,'content')]\
                         //*[@class ='android.widget.FrameLayout']//*[@class='android.widget.ImageView']").click()
+        # WebDriverWait(self._driver, 30).until(lambda x: "ETC" in self._driver.page_source)  # 等待首页元素出现完成加载
         return Main(self._driver)
