@@ -1,3 +1,5 @@
+import yaml
+from appium.webdriver import WebElement
 from appium.webdriver.webdriver import WebDriver
 import logging
 
@@ -39,3 +41,31 @@ class BasePage:
             # 如果黑名单也没找到，就报错
             logging.warn("black list no found")
             raise e
+
+    def steps(self, path):
+        with open(path) as f:
+            # 读取步骤定义文件
+            steps: list[dict] = yaml.safe_load(f)
+            # 保存一个目标对象
+            element: WebElement = None
+            for step in steps:
+                logging.info(step)
+                if "by" in step.keys():
+                    element = self.find(step["by"], step["locator"])
+                if "action" in step.keys():
+                    action = step["action"]
+                    if action == "find":
+                        pass
+                    elif action == "click":
+                        element.click()
+                    elif action == "text":
+                        element.text()
+                    elif action == "attribute":
+                        element.get_attribute(step["value"])
+                    elif action in ["send", "input"]:
+                        content: str = step["value"]
+                        for key in self._params.keys():
+                            content = content.replace("{%s}" % key, self._params[key])
+                        element.send_keys(content)
+
+
